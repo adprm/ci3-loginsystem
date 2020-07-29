@@ -15,6 +15,10 @@ class Auth extends CI_Controller {
     }
     
     public function registration() {
+
+        $this->form_validation->set_rules('name', 'Name', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+
         if ($this->form_validation->run() == false) {
             $data['title'] = 'User Registration';
             $this->load->view('templates/auth_header', $data);
