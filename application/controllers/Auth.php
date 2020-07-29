@@ -27,6 +27,7 @@ class Auth extends CI_Controller {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
 
+        // mencari user email
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
         // jika user ada
@@ -34,7 +35,7 @@ class Auth extends CI_Controller {
             // jika user aktif
             if ($user['is_active'] == 1) {
                 // cek password
-                if (password_verify($password, $user['passowrd'])) {
+                if (password_verify($password, $user['password'])) {
                     $data = [
                         'email' => $user['email'],
                         'role_id' => $user['role_id']
@@ -79,7 +80,7 @@ class Auth extends CI_Controller {
                 'name' => htmlspecialchars($this->input->post('name', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
                 'image' => 'default.jpg',
-                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
                 'is_active' => 1,
                 'date_created' => time()
