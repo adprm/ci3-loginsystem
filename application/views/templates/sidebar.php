@@ -12,6 +12,15 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
+    <!-- QUERY -->
+    <?php
+    $role_id = $this->session->user_data['role_id'];
+    $queryMenu =    "SELECT `user_menu`.`id`,`menu`
+                    FROM `user_menu` JOIN `user_menu_access`
+                    ON `user_menu`.`id` = `user_access_menu`.`menu_id`
+                    WHERE `user_access_menu`.`role_id` = $role_id";
+    ?>
+
     <!-- Heading -->
     <div class="sidebar-heading">
         Admin
