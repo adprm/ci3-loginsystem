@@ -53,7 +53,7 @@
         </button>
       </div>
       <!-- form -->
-      <form action="">
+      <form action="<?= base_url('menu/addmenu'); ?>" method="post">
         <div class="modal-body">
             <div class="form-group">
                 <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu name">
