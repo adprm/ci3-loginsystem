@@ -55,7 +55,9 @@
       <!-- form -->
       <form action="">
         <div class="modal-body">
-            ...
+            <div class="form-group">
+                <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu name">
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
