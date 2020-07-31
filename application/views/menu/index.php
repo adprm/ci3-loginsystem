@@ -7,6 +7,7 @@
     <!-- table row -->
     <div class="row">
         <div class="col-lg-6">
+            <a href="" class="btn btn-primary mb-3">Add New Menu</a>
             <!-- table -->
             <table class="table table-hover">
                 <thead>
@@ -23,8 +24,8 @@
                         <th scope="row"><?= $i ?></th>
                         <td><?= $m['menu']; ?></td>
                         <td>
-                            <a href="">edit</a>
-                            <a href="">delete</a>
+                            <a class="badge badge-success" href="">edit</a>
+                            <a class="badge badge-danger" href="">delete</a>
                         </td>
                     </tr>
                     <?php $i++; ?>
