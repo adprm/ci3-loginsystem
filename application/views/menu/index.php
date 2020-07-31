@@ -17,11 +17,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php  $i = 1; ?>
+                    <?php foreach($menu as $m) : ?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                        <th scope="row"><?= $i ?></th>
+                        <td><?= $m['menu']; ?></td>
+                        <td>
+                            <a href="">edit</a>
+                            <a href="">delete</a>
+                        </td>
                     </tr>
+                    <?php $i++; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
