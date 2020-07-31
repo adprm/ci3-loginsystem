@@ -7,6 +7,8 @@
     <!-- table row -->
     <div class="row">
         <div class="col-lg-6">
+            <!-- alert error -->
+            <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
             <!-- btn add new menu -->
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Add New Menu</a>
             <!-- table -->
@@ -53,7 +55,7 @@
         </button>
       </div>
       <!-- form -->
-      <form action="<?= base_url('menu/addmenu'); ?>" method="post">
+      <form action="<?= base_url('menu'); ?>" method="post">
         <div class="modal-body">
             <div class="form-group">
                 <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu name">
