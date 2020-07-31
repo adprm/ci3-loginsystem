@@ -17,6 +17,13 @@ class Menu extends CI_Controller {
             $this->load->view('templates/topbar', $data);
             $this->load->view('menu/index', $data);
             $this->load->view('templates/footer');
+        } else {
+            $this->db->insert('user_menu', ['menu' => $this->input->post('menu')]);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            New menu added!</div>');
+                    
+            redirect('menu');
         }
         
     }
