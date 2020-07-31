@@ -7,6 +7,7 @@
     <!-- table row -->
     <div class="row">
         <div class="col-lg-6">
+            <!-- btn add new menu -->
             <a href="" class="btn btn-primary mb-3">Add New Menu</a>
             <!-- table -->
             <table class="table table-hover">
