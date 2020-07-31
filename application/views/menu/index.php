@@ -9,6 +9,8 @@
         <div class="col-lg-6">
             <!-- alert error -->
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
+            <!-- alert success -->
+            <?= $this->session->flashdata('message'); ?>
             <!-- btn add new menu -->
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Add New Menu</a>
             <!-- table -->
