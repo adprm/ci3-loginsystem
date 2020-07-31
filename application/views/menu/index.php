@@ -29,7 +29,7 @@
                         <th scope="row"><?= $i ?></th>
                         <td><?= $m['menu']; ?></td>
                         <td>
-                            <a class="badge badge-success" href="">edit</a>
+                            <a class="badge badge-success" href="" data-toggle="modal" data-target="#editMenuModal">edit</a>
                             <a class="badge badge-danger" href="">delete</a>
                         </td>
                     </tr>
