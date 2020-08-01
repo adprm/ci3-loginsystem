@@ -7,8 +7,7 @@
     <!-- table row -->
     <div class="row">
         <div class="col-lg-6">
-            <!-- alert error -->
-            <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
+            <?= $this->session->flashdata('message_error'); ?>
             <!-- alert success -->
             <?= $this->session->flashdata('message'); ?>
             <!-- btn add new menu -->
@@ -46,7 +45,7 @@
 </div>
 <!-- End of Main Content -->
 
-<!-- Modal -->
+<!-- Modal add new menu-->
 <div class="modal fade" id="newMenuModal" tabindex="-1" role="dialog" aria-labelledby="newMenuModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -57,7 +56,7 @@
         </button>
       </div>
       <!-- form -->
-      <form action="<?= base_url('menu'); ?>" method="post">
+      <form action="<?= site_url('menu/add'); ?>" method="post">
         <div class="modal-body">
             <div class="form-group">
                 <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu name">
@@ -66,6 +65,32 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- modal edit menu -->
+<div class="modal fade" id="editMenuModal" tabindex="-1" role="dialog" aria-labelledby="editMenuModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editMenuModalLabel">Edit Menu</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- form -->
+      <form action="<?= base_url('menu/edit'); ?>" method="post">
+        <div class="modal-body">
+            <div class="form-group">
+                <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu name">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </div>
       </form>
     </div>
