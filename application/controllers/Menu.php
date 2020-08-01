@@ -51,7 +51,7 @@ class Menu extends CI_Controller {
         } else {
             $menu->update();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            New menu added!!</div>');
+            New menu added!</div>');
         }
 
         redirect('menu');
@@ -59,7 +59,9 @@ class Menu extends CI_Controller {
 
     public function delete($id = null) {
         if ($this->menu_model->delete($id)) {
-            redirect(site_url('menu'));
+            $this->session->set_flashdata('message_delete', '<div class="alert alert-success" role="alert">
+            Data successfully deleted!</div>');
+            redirect('menu');
         }
     }
 }
