@@ -57,4 +57,9 @@ class Menu extends CI_Controller {
         redirect('menu');
     }
 
+    public function delete($id = null) {
+        if ($this->menu_model->delete($id)) {
+            redirect(site_url('menu'));
+        }
+    }
 }
