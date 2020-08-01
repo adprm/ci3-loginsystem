@@ -1,3 +1,10 @@
+<script>
+function deleteConfirm(url){
+	$('#btn-delete').attr('href', url);
+	$('#deleteModal').modal();
+}
+</script>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -28,8 +35,8 @@
                         <th scope="row"><?= $i ?></th>
                         <td><?= $m['menu']; ?></td>
                         <td>
-                            <a class="badge badge-success" href="" data-toggle="modal" data-target="#editMenuModal">edit</a>
-                            <a class="badge badge-danger" href="">delete</a>
+                            <a class="badge badge-success" href="<?= site_url('menu/edit') ?>" data-toggle="modal" data-target="#editMenuModal">edit</a>
+                            <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?php echo site_url('menu/delete/'.$m['id']) ?>')">delete</a>
                         </td>
                     </tr>
                     <?php $i++; ?>
@@ -82,10 +89,10 @@
         </button>
       </div>
       <!-- form -->
-      <form action="<?= site_url('menu/edit'); ?>" method="post">
+      <form action="<?= site_url('menu/edit') . $m['id']; ?>" method="post">
         <div class="modal-body">
             <div class="form-group">
-                <input type="text" class="form-control" id="menu" name="id" placeholder="Menu name">
+                <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu name">
             </div>
         </div>
         <div class="modal-footer">
@@ -93,6 +100,26 @@
             <button type="submit" class="btn btn-primary">Update</button>
         </div>
       </form>
+    </div>
+  </div>
+</div>
+
+<!-- modal delete -->
+<!-- Logout Delete Confirmation-->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Deleted data will not be restored.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a id="btn-delete" class="btn btn-danger" href="#">Delete</a>
+      </div>
     </div>
   </div>
 </div>
