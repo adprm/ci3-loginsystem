@@ -14,9 +14,12 @@ function deleteConfirm(url){
     <!-- table row -->
     <div class="row">
         <div class="col-lg-6">
+            <!-- alert error add data -->
             <?= $this->session->flashdata('message_error'); ?>
-            <!-- alert success -->
+            <!-- alert success add data -->
             <?= $this->session->flashdata('message'); ?>
+            <!-- alert delete data -->
+            <?= $this->session->flashdata('message_delete'); ?>
             <!-- btn add new menu -->
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Add New Menu</a>
             <!-- table -->
