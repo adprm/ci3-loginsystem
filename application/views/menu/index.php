@@ -82,10 +82,10 @@
         </button>
       </div>
       <!-- form -->
-      <form action="<?= base_url('menu/edit'); ?>" method="post">
+      <form action="<?= site_url('menu/edit'); ?>" method="post">
         <div class="modal-body">
             <div class="form-group">
-                <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu name">
+                <input type="text" class="form-control" id="menu" name="id" placeholder="Menu name">
             </div>
         </div>
         <div class="modal-footer">

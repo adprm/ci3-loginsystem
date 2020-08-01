@@ -39,4 +39,22 @@ class Menu extends CI_Controller {
         redirect('menu');
     }
 
+    function edit($id = null) {
+        if (!isset($id)) redirect('menu');
+
+        $menu = $this->menu_model;
+        $validation = $this->form_validation->set_rules('menu', 'Menu', 'required');
+
+        if ($validation->run() == false) {
+            $this->session->set_flashdata('message_error', '<div class="alert alert-danger" role="alert">
+            New menu dont added!</div>');
+        } else {
+            $menu->update();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            New menu added!!</div>');
+        }
+
+        redirect('menu');
+    }
+
 }
