@@ -77,6 +77,7 @@ class Menu extends CI_Controller {
         }
     }
 
+    // submenu
     public function submenu() {
         $data['title'] = "Submenu Management";
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
@@ -86,10 +87,18 @@ class Menu extends CI_Controller {
         $data['subMenu'] = $this->menu->getSubMenu();
         $data['menu'] = $this->db->get('user_menu')->result_array();
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('menu/submenu', $data);
-        $this->load->view('templates/footer');
+        $validation = $this->form_validation->set_rules('title', 'Title', 'required');
+        $validation = $this->form_validation->set_rules('menu', 'Menu', 'required');
+        $validation = $this->form_validation->set_rules('url', 'Url', 'required');
+        $validation = $this->form_validation->set_rules('icon', 'Icon', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('menu/submenu', $data);
+            $this->load->view('templates/footer');
+        }
+
     }
 }
