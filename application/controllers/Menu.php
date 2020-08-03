@@ -33,28 +33,40 @@ class Menu extends CI_Controller {
         } else {
             $menu->save();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            New menu added!!</div>');
+            New menu added!</div>');
         }
 
         redirect('menu');
     }
 
     function edit($id = null) {
+        $data['title'] = "Edit Menu";
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['menu'] = $this->db->get('user_menu')->result_array();
+
         if (!isset($id)) redirect('menu');
 
         $menu = $this->menu_model;
         $validation = $this->form_validation->set_rules('menu', 'Menu', 'required');
 
+        $data['menu'] = $menu->getById($id);
+        if (!$data['menu']) show_404();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('menu/edit_menu', $data);
+        $this->load->view('templates/footer');
+
         if ($validation->run() == false) {
             $this->session->set_flashdata('message_error', '<div class="alert alert-danger" role="alert">
-            New menu dont added!</div>');
+            Data failed to edit!</div>');
         } else {
             $menu->update();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            New menu added!</div>');
+            $this->session->set_flashdata('message_edited_success', '<div class="alert alert-success" role="alert">
+            Data edited successfully!</div>');
+            redirect('menu');
         }
-
-        redirect('menu');
     }
 
     public function delete($id = null) {
