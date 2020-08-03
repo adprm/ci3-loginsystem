@@ -20,6 +20,8 @@ function deleteConfirm(url){
             <?= $this->session->flashdata('message'); ?>
             <!-- alert delete data -->
             <?= $this->session->flashdata('message_delete'); ?>
+            <!-- alert succesc edit data -->
+            <?= $this->session->flashdata('message_edited_success'); ?>
             <!-- btn add new menu -->
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Add New Menu</a>
             <!-- table -->
@@ -38,7 +40,7 @@ function deleteConfirm(url){
                         <th scope="row"><?= $i ?></th>
                         <td><?= $m['menu']; ?></td>
                         <td>
-                            <a class="badge badge-success" href="<?= site_url('menu/edit') ?>" data-toggle="modal" data-target="#editMenuModal">edit</a>
+                            <a class="badge badge-success" href="<?= site_url('menu/edit/'.$m['id']); ?>">edit</a>
                             <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?php echo site_url('menu/delete/'.$m['id']) ?>')">delete</a>
                         </td>
                     </tr>
@@ -95,7 +97,7 @@ function deleteConfirm(url){
       <form action="<?= site_url('menu/edit') . $m['id']; ?>" method="post">
         <div class="modal-body">
             <div class="form-group">
-                <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu name">
+                <input type="text" class="form-control" id="id" name="menu" placeholder="Menu name">
             </div>
         </div>
         <div class="modal-footer">
