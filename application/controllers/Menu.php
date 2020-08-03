@@ -84,6 +84,7 @@ class Menu extends CI_Controller {
         $this->load->model('menu_model', 'menu');
 
         $data['subMenu'] = $this->menu->getSubMenu();
+        $data['menu'] = $this->db->get('user_menu')->result_array();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
