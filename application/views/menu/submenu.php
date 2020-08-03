@@ -58,20 +58,28 @@ function deleteConfirm(url){
 <!-- End of Main Content -->
 
 <!-- Modal add new menu-->
-<div class="modal fade" id="newMenuModal" tabindex="-1" role="dialog" aria-labelledby="newMenuModalLabel" aria-hidden="true">
+<div class="modal fade" id="newSubMenuModal" tabindex="-1" role="dialog" aria-labelledby="newSubMenuModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="newMenuModalLabel">Add New Menu</h5>
+        <h5 class="modal-title" id="newSubMenuModalLabel">Add New Sub Menu</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <!-- form -->
-      <form action="<?= site_url('menu/add'); ?>" method="post">
+      <form action="<?= base_url('menu/submenu'); ?>" method="post">
         <div class="modal-body">
             <div class="form-group">
-                <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu name">
+              <input type="text" class="form-control" id="title" name="title" placeholder="Submenu title">
+            </div>
+            <div class="form-group">
+              <select name="menu_id" id="menu_id" class="form-control">
+                <option value="">Select Menu</option>
+                <?php foreach ($menu as $m) : ?>
+                  <option value="<?= $m['id']; ?>"><?= $m['menu']; ?></option>
+                <?php endforeach; ?>
+              </select>
             </div>
         </div>
         <div class="modal-footer">
