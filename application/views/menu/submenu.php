@@ -14,6 +14,12 @@ function deleteConfirm(url){
     <!-- table row -->
     <div class="row">
         <div class="col-lg">
+            <!-- error add new sub menu -->
+            <?php if (validation_errors()) : ?>
+              <div class="alert alert-danger" role="alert">
+                <?= validation_errors(); ?>
+              </div>
+            <?php endif; ?>
             <!-- btn add new submenu -->
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newSubMenuModal">Add New Submenu</a>
             <!-- table -->
