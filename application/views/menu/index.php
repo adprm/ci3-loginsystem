@@ -15,9 +15,9 @@ function deleteConfirm(url){
     <div class="row">
         <div class="col-lg-6">
             <!-- alert error add data -->
-            <?= $this->session->flashdata('message_error'); ?>
+            <?= $this->session->flashdata('message_error_addmenu'); ?>
             <!-- alert success add data -->
-            <?= $this->session->flashdata('message'); ?>
+            <?= $this->session->flashdata('message_success_addmenu'); ?>
             <!-- alert delete data -->
             <?= $this->session->flashdata('message_delete'); ?>
             <!-- alert succesc edit data -->
