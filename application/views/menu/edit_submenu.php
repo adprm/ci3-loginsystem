@@ -14,7 +14,7 @@
                     <input type="hidden" name="id" value="<?php echo $subMenu->id ?>" />
                     <!-- edit name submenu -->
                 	<div class="form-group">
-                		<label for="menu">Title menu</label>
+                		<label for="menu">Title Sub Menu</label>
                 		<input class="form-control <?php echo form_error('title') ? 'is-invalid':'' ?>"
                 		 type="text" name="title" placeholder="Title menu" value="<?php echo $subMenu->title ?>" />
                 		<div class="invalid-feedback">
@@ -29,6 +29,24 @@
                             <option value="<?= $m['id']; ?>"><?= $m['menu']; ?></option>
                             <?php endforeach; ?>
                         </select>
+                    </div>
+                    <!-- edit url submenu -->
+                	<div class="form-group">
+                		<label for="url">Url menu</label>
+                		<input class="form-control <?php echo form_error('url') ? 'is-invalid':'' ?>"
+                		 type="text" name="url" placeholder="Url menu" value="<?php echo $subMenu->url ?>" />
+                		<div class="invalid-feedback">
+                			<?php echo form_error('url') ?>
+                		</div>
+                    </div>
+                    <!-- edit icon submenu -->
+                	<div class="form-group">
+                		<label for="icon">Icon menu</label>
+                		<input class="form-control <?php echo form_error('icon') ? 'is-invalid':'' ?>"
+                		 type="text" name="icon" placeholder="Icon menu" value="<?php echo $subMenu->icon ?>" />
+                		<div class="invalid-feedback">
+                			<?php echo form_error('icon') ?>
+                		</div>
                     </div>
                     <!-- btn -->
                 	<input class="btn btn-success" type="submit" name="btn" value="Update" />
