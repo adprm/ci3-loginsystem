@@ -6,9 +6,7 @@ class Admin extends CI_Controller {
     // tidak menerima user yang belum login
     public function __construct() {
         parent::__construct();
-        if (!$this->session->userdata('email')) {
-            redirect('auth');
-        }
+        is_logged_in();
     }
 
     public function index() {
