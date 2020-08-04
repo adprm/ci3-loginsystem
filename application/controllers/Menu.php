@@ -31,11 +31,11 @@ class Menu extends CI_Controller {
         $validation = $this->form_validation->set_rules('menu', 'Menu', 'required');
 
         if ($validation->run() == false) {
-            $this->session->set_flashdata('message_error', '<div class="alert alert-danger" role="alert">
+            $this->session->set_flashdata('message_error_addmenu', '<div class="alert alert-danger" role="alert">
             New menu dont added!</div>');
         } else {
             $menu->saveMenu();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            $this->session->set_flashdata('message_success_addmmenu', '<div class="alert alert-success" role="alert">
             New menu added!</div>');
         }
 
