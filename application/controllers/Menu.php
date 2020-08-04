@@ -35,7 +35,7 @@ class Menu extends CI_Controller {
             New menu dont added!</div>');
         } else {
             $menu->saveMenu();
-            $this->session->set_flashdata('message_success_addmmenu', '<div class="alert alert-success" role="alert">
+            $this->session->set_flashdata('message_success_addmenu', '<div class="alert alert-success" role="alert">
             New menu added!</div>');
         }
 
@@ -63,11 +63,11 @@ class Menu extends CI_Controller {
         $this->load->view('templates/footer');
 
         if ($validation->run() == false) {
-            $this->session->set_flashdata('message_error', '<div class="alert alert-danger" role="alert">
+            $this->session->set_flashdata('message_error_editmenu', '<div class="alert alert-danger" role="alert">
             Data failed to edit!</div>');
         } else {
             $menu->updateMenu();
-            $this->session->set_flashdata('message_edited_success', '<div class="alert alert-success" role="alert">
+            $this->session->set_flashdata('message_success_editmenu', '<div class="alert alert-success" role="alert">
             Data edited successfully!</div>');
             redirect('menu');
         }
@@ -76,7 +76,7 @@ class Menu extends CI_Controller {
     // delete menu
     public function deleteMenu($id = null) {
         if ($this->menu_model->deleteMenu($id)) {
-            $this->session->set_flashdata('message_delete', '<div class="alert alert-success" role="alert">
+            $this->session->set_flashdata('message_delete_menu', '<div class="alert alert-success" role="alert">
             Data successfully deleted!</div>');
             redirect('menu');
         }
@@ -93,7 +93,7 @@ class Menu extends CI_Controller {
         $data['menu'] = $this->db->get('user_menu')->result_array();
 
         $validation = $this->form_validation->set_rules('title', 'Title', 'required');
-        $validation = $this->form_validation->set_rules('menu_id', 'Menu_id', 'required');
+        $validation = $this->form_validation->set_rules('menu_id', 'Menu', 'required');
         $validation = $this->form_validation->set_rules('url', 'Url', 'required');
         $validation = $this->form_validation->set_rules('icon', 'Icon', 'required');
 
@@ -113,7 +113,7 @@ class Menu extends CI_Controller {
                 'is_active' => $this->input->post('is_active')
             ];
             $this->db->insert('user_sub_menu', $data);
-            $this->session->set_flashdata('message_add_new_submenu', '<div class="alert alert-success" role="alert">
+            $this->session->set_flashdata('message_success_addsubmenu', '<div class="alert alert-success" role="alert">
             New sub menu added!</div>');
             redirect('menu/submenu');
         }
@@ -129,7 +129,7 @@ class Menu extends CI_Controller {
 
         $menu = $this->submenu_model;
         $validation = $this->form_validation->set_rules('title', 'Title', 'required');
-        $validation = $this->form_validation->set_rules('menu_id', 'Menu_id', 'required');
+        $validation = $this->form_validation->set_rules('menu_id', 'Menu', 'required');
         $validation = $this->form_validation->set_rules('url', 'Url', 'required');
         $validation = $this->form_validation->set_rules('icon', 'Icon', 'required');
 
@@ -143,11 +143,11 @@ class Menu extends CI_Controller {
         $this->load->view('templates/footer');
 
         if ($validation->run() == false) {
-            $this->session->set_flashdata('message_error', '<div class="alert alert-danger" role="alert">
+            $this->session->set_flashdata('message_error_editsubmenu', '<div class="alert alert-danger" role="alert">
             Data failed to edit!</div>');
         } else {
             $menu->updateSubmenu();
-            $this->session->set_flashdata('message_edited_success', '<div class="alert alert-success" role="alert">
+            $this->session->set_flashdata('message_success_editsubmenu', '<div class="alert alert-success" role="alert">
             Data edited successfully!</div>');
             redirect('menu');
         }
