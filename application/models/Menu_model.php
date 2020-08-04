@@ -11,14 +11,11 @@ class Menu_model extends CI_Model {
         return $this->db->query($query)->result_array();
     }
 
+    // db usermenu
     private $_table = "user_menu";
 
     public $id;
     public $menu;
-
-    public function getAll() {
-        return $this->db->get($this->_table)->result();
-    }
 
     public function getById($id) {
         return $this->db->get_where($this->_table, ['id' => $id])->row();
