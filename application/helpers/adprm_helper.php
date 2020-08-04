@@ -1,8 +1,10 @@
 <?php
 
-function is_looged_in() {
+function is_logged_in() {
+    // memamnggil library ci 
+    $ci = get_instance();
     // cek sudah login atau belu
-    if (!$this->session->userdata('email')) {
+    if (!$ci->session->userdata('email')) {
         redirect('auth');
     }
 }
