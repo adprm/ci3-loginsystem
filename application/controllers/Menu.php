@@ -5,8 +5,13 @@ class Menu extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        if (!$this->session->userdata('email')) {
+            redirect('auth');
+        }
+        
         $this->load->model('menu_model');
         $this->load->model('submenu_model');
+    }
     }
 
     // menu
