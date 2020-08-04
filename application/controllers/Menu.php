@@ -125,6 +125,11 @@ class Menu extends CI_Controller {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['subMenu'] = $this->db->get('user_sub_menu')->result_array();
 
+        $this->load->model('menu_model', 'menu');
+
+        $data['subMenu'] = $this->menu->getSubMenu();
+        $data['menu'] = $this->db->get('user_menu')->result_array();
+
         if (!isset($id)) redirect('menu');
 
         $menu = $this->submenu_model;
