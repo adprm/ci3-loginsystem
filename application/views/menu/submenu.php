@@ -21,7 +21,11 @@ function deleteConfirm(url){
               </div>
             <?php endif; ?>
             <!-- alert success add new sub menu -->
-            <?= $this->session->flashdata('message_add_new_submenu'); ?>
+            <?= $this->session->flashdata('message_success_addsubmenu'); ?>
+            <!-- alert error edit data -->
+            <?= $this->session->flashdata('message_error_editsubmenu'); ?>
+            <!-- alert success edit data -->
+            <?= $this->session->flashdata('message_success_editsubmenu'); ?>
             <!-- btn add new submenu -->
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newSubMenuModal">Add New Submenu</a>
             <!-- table -->

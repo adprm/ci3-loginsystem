@@ -9,7 +9,7 @@
         <div class="col-lg-6">
             <div class="card-body">
                 <!-- alert error edit data -->
-                <?= $this->session->flashdata('message_error'); ?>
+                <?= $this->session->flashdata('message_error_editsubmenu'); ?>
                 <form action="" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?php echo $subMenu->id ?>" />
                     <!-- edit title -->

@@ -19,9 +19,11 @@ function deleteConfirm(url){
             <!-- alert success add data -->
             <?= $this->session->flashdata('message_success_addmenu'); ?>
             <!-- alert delete data -->
-            <?= $this->session->flashdata('message_delete'); ?>
-            <!-- alert succesc edit data -->
-            <?= $this->session->flashdata('message_edited_success'); ?>
+            <?= $this->session->flashdata('message_delete_menu'); ?>
+            <!-- alert success edit data -->
+            <?= $this->session->flashdata('message_success_editmenu'); ?>
+            <!-- alert error edit data -->
+            <?= $this->session->flashdata('message_error_editmenu'); ?>
             <!-- btn add new menu -->
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Add New Menu</a>
             <!-- table -->
