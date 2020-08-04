@@ -117,6 +117,39 @@ class Menu extends CI_Controller {
             New sub menu added!</div>');
             redirect('menu/submenu');
         }
+    }
 
+    // editsubmenu
+    public function edit($id = null) {
+        $data['title'] = "Edit Sub Menu";
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['submenu'] = $this->db->get('user_sub_menu')->result_array();
+
+        if (!isset($id)) redirect('menu');
+
+        $menu = $this->submenu_model;
+        $validation = $this->form_validation->set_rules('title', 'Title', 'required');
+        $validation = $this->form_validation->set_rules('menu_id', 'Menu_id', 'required');
+        $validation = $this->form_validation->set_rules('url', 'Url', 'required');
+        $validation = $this->form_validation->set_rules('icon', 'Icon', 'required');
+
+        $data['menu'] = $menu->getByIdSubmenu($id);
+        if (!$data['menu']) show_404();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('menu/edit_menu', $data);
+        $this->load->view('templates/footer');
+
+        if ($validation->run() == false) {
+            $this->session->set_flashdata('message_error', '<div class="alert alert-danger" role="alert">
+            Data failed to edit!</div>');
+        } else {
+            $menu->updateSubmenu();
+            $this->session->set_flashdata('message_edited_success', '<div class="alert alert-success" role="alert">
+            Data edited successfully!</div>');
+            redirect('menu');
+        }
     }
 }
