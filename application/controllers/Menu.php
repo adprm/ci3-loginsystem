@@ -6,6 +6,7 @@ class Menu extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('menu_model');
+        $this->load->model('submenu_model');
     }
 
     // menu
@@ -23,6 +24,7 @@ class Menu extends CI_Controller {
 
     }
 
+    // add new menu
     public function add() {
         $menu = $this->menu_model;
 
@@ -40,6 +42,7 @@ class Menu extends CI_Controller {
         redirect('menu');
     }
 
+    // edit menu
     function edit($id = null) {
         $data['title'] = "Edit Menu";
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
@@ -70,6 +73,7 @@ class Menu extends CI_Controller {
         }
     }
 
+    // delete menu
     public function delete($id = null) {
         if ($this->menu_model->deleteMenu($id)) {
             $this->session->set_flashdata('message_delete', '<div class="alert alert-success" role="alert">
@@ -100,6 +104,7 @@ class Menu extends CI_Controller {
             $this->load->view('menu/submenu', $data);
             $this->load->view('templates/footer');
         } else {
+            // add menu
             $data = [
                 'title' => $this->input->post('title'),
                 'menu_id' => $this->input->post('menu_id'),
