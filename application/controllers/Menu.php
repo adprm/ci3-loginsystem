@@ -157,4 +157,13 @@ class Menu extends CI_Controller {
             redirect('menu/submenu');
         }
     }
+
+    // delete submenu
+    public function deleteSubmenu($id = null) {
+        if ($this->submenu_model->deleteSubmenu($id)) {
+            $this->session->set_flashdata('message_delete_submenu', '<div class="alert alert-success" role="alert">
+            Data successfully deleted!</div>');
+            redirect('menu/submenu');
+        }
+    }
 }
