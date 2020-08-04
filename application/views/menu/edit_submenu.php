@@ -12,7 +12,7 @@
                 <?= $this->session->flashdata('message_error_editsubmenu'); ?>
                 <form action="" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?php echo $subMenu->id ?>" />
-                    <!-- edit title -->
+                    <!-- edit name submenu -->
                 	<div class="form-group">
                 		<label for="menu">Title menu</label>
                 		<input class="form-control <?php echo form_error('title') ? 'is-invalid':'' ?>"
@@ -20,7 +20,16 @@
                 		<div class="invalid-feedback">
                 			<?php echo form_error('title') ?>
                 		</div>
-                	</div>
+                    </div>
+                    <!-- edit menu -->
+                    <div class="form-group">
+                        <label for="menu">Menu</label>
+                        <select name="menu_id" id="menu_id" class="form-control">
+                        <?php foreach ($menu as $m) : ?>
+                            <option value="<?= $m['id']; ?>"><?= $m['menu']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                     <!-- btn -->
                 	<input class="btn btn-success" type="submit" name="btn" value="Update" />
                 </form>
