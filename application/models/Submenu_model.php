@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Menu_model extends CI_Model {
+class Submenu_model extends CI_Model {
 
 // dbsubmenu
     private $_tableSubmenu = "user_sub_menu";
