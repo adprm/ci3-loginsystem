@@ -54,4 +54,15 @@ class Menu_model extends CI_Model {
         return $this->db->get_where($this->_tableSubmenu, ['id' => $id])->row();
     }
 
+    public function saveSubmenu() {
+        $post = $this->input->post();
+        $this->menu_id = $post['menu_id'];
+        $this->title = $post['title'];
+        $this->url = $post-['url'];
+        $this->icon = $post['icon'];
+        $this->is_active = $post['is_active'];
+
+        return $this->db->insert($this->_tableSubmenu, $this);
+    }
+
 }
