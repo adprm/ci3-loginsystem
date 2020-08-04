@@ -41,6 +41,17 @@ class Menu_model extends CI_Model {
     }
 
     // dbsubmenu
-    private $_tableMenu
+    private $_tableSubmenu;
+
+    public $id;
+    public $menu_id;
+    public $title;
+    public $url;
+    public $icon;
+    public $is_active;
+
+    public function getByIdSubmenu($id) {
+        return $this->db->get_where($this->_tableSubmenu, ['id' => $id])->row();
+    }
 
 }
