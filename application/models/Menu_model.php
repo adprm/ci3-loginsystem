@@ -12,20 +12,20 @@ class Menu_model extends CI_Model {
     }
 
     // db usermenu
-    private $_table = "user_menu";
+    private $_tableMenu = "user_menu";
 
     public $id;
     public $menu;
 
     public function getByIdMenu($id) {
-        return $this->db->get_where($this->_table, ['id' => $id])->row();
+        return $this->db->get_where($this->_tableMenu, ['id' => $id])->row();
     }
 
     public function saveMenu() {
         $post = $this->input->post();
         $this->menu = $post['menu'];
 
-        return $this->db->insert($this->_table, $this);
+        return $this->db->insert($this->_tableMenu, $this);
     }
 
     public function updateMenu() {
@@ -33,11 +33,14 @@ class Menu_model extends CI_Model {
         $this->id = $post['id'];
         $this->menu = $post['menu'];
 
-        return $this->db->update($this->_table, $this, array('id' => $post['id']));
+        return $this->db->update($this->_tableMenu, $this, array('id' => $post['id']));
     }
 
     public function deleteMenu($id) {
-        return $this->db->delete($this->_table, array("id" => $id));
+        return $this->db->delete($this->_tableMenu, array("id" => $id));
     }
+
+    // dbsubmenu
+    private $_tableMenu
 
 }
