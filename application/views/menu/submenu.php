@@ -48,7 +48,7 @@ function deleteConfirm(url){
                         <td><?= $sm['icon']; ?></td>
                         <td><?= $sm['is_active']; ?></td>
                         <td>
-                            <a class="badge badge-success" href="<?= site_url('menu/edit/'.$sm['id']); ?>">edit</a>
+                            <a class="badge badge-success" href="<?= site_url('menu/editSubmenu/'.$sm['id']); ?>">edit</a>
                             <a class="badge badge-danger" href="#">delete</a>
                         </td>
                     </tr>
