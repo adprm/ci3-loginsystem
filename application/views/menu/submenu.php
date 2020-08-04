@@ -26,6 +26,8 @@ function deleteConfirm(url){
             <?= $this->session->flashdata('message_error_editsubmenu'); ?>
             <!-- alert success edit data -->
             <?= $this->session->flashdata('message_success_editsubmenu'); ?>
+            <!-- alert delete submenu -->
+            <?= $this->session->flashdata('message_delete_submenu'); ?>
             <!-- btn add new submenu -->
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newSubMenuModal">Add New Submenu</a>
             <!-- table -->
@@ -53,7 +55,7 @@ function deleteConfirm(url){
                         <td><?= $sm['is_active']; ?></td>
                         <td>
                             <a class="badge badge-success" href="<?= site_url('menu/editSubmenu/'.$sm['id']); ?>">edit</a>
-                            <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?php echo site_url('menu/deleteMenu/'.$m['id']) ?>')">delete</a>
+                            <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?php echo site_url('menu/deleteSubmenu/'.$sm['id']) ?>')">delete</a>
                         </td>
                     </tr>
                     <?php $i++; ?>
