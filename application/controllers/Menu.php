@@ -25,7 +25,7 @@ class Menu extends CI_Controller {
     }
 
     // add new menu
-    public function add() {
+    public function addMenu() {
         $menu = $this->menu_model;
 
         $validation = $this->form_validation->set_rules('menu', 'Menu', 'required');
@@ -43,7 +43,7 @@ class Menu extends CI_Controller {
     }
 
     // edit menu
-    function edit($id = null) {
+    function editMenu($id = null) {
         $data['title'] = "Edit Menu";
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['menu'] = $this->db->get('user_menu')->result_array();
@@ -74,7 +74,7 @@ class Menu extends CI_Controller {
     }
 
     // delete menu
-    public function delete($id = null) {
+    public function deleteMenu($id = null) {
         if ($this->menu_model->deleteMenu($id)) {
             $this->session->set_flashdata('message_delete', '<div class="alert alert-success" role="alert">
             Data successfully deleted!</div>');
@@ -120,10 +120,10 @@ class Menu extends CI_Controller {
     }
 
     // editsubmenu
-    public function edit($id = null) {
+    public function editSubmenu($id = null) {
         $data['title'] = "Edit Sub Menu";
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['submenu'] = $this->db->get('user_sub_menu')->result_array();
+        $data['subMenu'] = $this->db->get('user_sub_menu')->result_array();
 
         if (!isset($id)) redirect('menu');
 
@@ -133,13 +133,13 @@ class Menu extends CI_Controller {
         $validation = $this->form_validation->set_rules('url', 'Url', 'required');
         $validation = $this->form_validation->set_rules('icon', 'Icon', 'required');
 
-        $data['menu'] = $menu->getByIdSubmenu($id);
-        if (!$data['menu']) show_404();
+        $data['subMenu'] = $menu->getByIdSubmenu($id);
+        if (!$data['subMenu']) show_404();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('menu/edit_menu', $data);
+        $this->load->view('menu/edit_submenu', $data);
         $this->load->view('templates/footer');
 
         if ($validation->run() == false) {
