@@ -154,7 +154,7 @@ class Menu extends CI_Controller {
             $menu->updateSubmenu();
             $this->session->set_flashdata('message_success_editsubmenu', '<div class="alert alert-success" role="alert">
             Data edited successfully!</div>');
-            redirect('menu');
+            redirect('menu/submenu');
         }
     }
 }
