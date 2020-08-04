@@ -77,4 +77,8 @@ class Menu_model extends CI_Model {
         return $this->db->update($this->_tableSubmenu, $this, array('id' => $post['id']));
     }
 
+    public function deleteSubmenu($id) {
+        return $this->db->delete($this->_tableSubmenu, array('id' => $id));
+    }
+
 }
