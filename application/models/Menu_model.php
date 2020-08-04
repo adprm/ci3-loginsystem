@@ -17,18 +17,18 @@ class Menu_model extends CI_Model {
     public $id;
     public $menu;
 
-    public function getById($id) {
+    public function getByIdMenu($id) {
         return $this->db->get_where($this->_table, ['id' => $id])->row();
     }
 
-    public function save() {
+    public function saveMenu() {
         $post = $this->input->post();
         $this->menu = $post['menu'];
 
         return $this->db->insert($this->_table, $this);
     }
 
-    public function update() {
+    public function updateMenu() {
         $post = $this->input->post();
         $this->id = $post['id'];
         $this->menu = $post['menu'];
@@ -36,7 +36,7 @@ class Menu_model extends CI_Model {
         return $this->db->update($this->_table, $this, array('id' => $post['id']));
     }
 
-    public function delete($id) {
+    public function deleteMenu($id) {
         return $this->db->delete($this->_table, array("id" => $id));
     }
 
