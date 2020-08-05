@@ -49,7 +49,7 @@
 <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
 
 <script>
-$('form-check-input').on('click', function() {
+$('.form-check-input').on('click', function() {
     const menuId = $(this).data('menu');
     const roleId = $(this).data('role');
 
@@ -63,8 +63,8 @@ $('form-check-input').on('click', function() {
         success: function() {
             document.location.href = "<?= base_url('admin/roleaccess/') ?>" + roleId;
         }
-    })
-})
+    });
+});
 </script>
 
 </body>
