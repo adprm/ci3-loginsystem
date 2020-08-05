@@ -42,7 +42,7 @@ function deleteConfirm(url){
                         <th scope="row"><?= $i ?></th>
                         <td><?= $r['role']; ?></td>
                         <td>
-                            <a class="badge badge-warning" href="">access</a>
+                            <a class="badge badge-warning" href="<?= base_url('admin/roleaccess/') . $r['id']; ?>">access</a>
                             <a class="badge badge-success" href="<?= site_url('menu/editMenu/'.$r['id']); ?>">edit</a>
                             <a class="badge badge-danger" href="#!" 
                             onclick="deleteConfirm('<?php echo site_url('menu/deleteMenu/'.$r['id']) ?>')">delete</a>
