@@ -58,6 +58,11 @@ class Admin extends CI_Controller {
         $menuId = $this->input->post('menuId');
         $roleId = $this->input->post('roleId');
 
-        
+        $data = [
+            'role_id' => $role_id,
+            'menu_id' => $menu_id
+        ];
+
+        $result = $this->db->get_where('user_access_menu', $data);
     }
 }
