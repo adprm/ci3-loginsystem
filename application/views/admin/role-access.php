@@ -33,7 +33,9 @@ function deleteConfirm(url){
                         <th scope="row"><?= $i ?></th>
                         <td><?= $m['menu']; ?></td>
                         <td>
-                            
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox">
+                            </div>
                         </td>
                     </tr>
                     <?php $i++; ?>
