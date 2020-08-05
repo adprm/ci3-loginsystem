@@ -1,10 +1,3 @@
-<script>
-function deleteConfirm(url){
-	$('#btn-delete').attr('href', url);
-	$('#deleteModal').modal();
-}
-</script>
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
