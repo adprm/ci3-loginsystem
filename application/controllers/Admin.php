@@ -40,6 +40,10 @@ class Admin extends CI_Controller {
 
         // query data role
         $data['role'] = $this->db->get_where('user_role', ['id' => $role_id])->row_array();
+
+        // query tidak tampilakn access admin untuk administrator
+        $this->db->where('id !=', 1);
+
         // query data menu
         $data['menu'] = $this->db->get('user_menu')->result_array();
         
