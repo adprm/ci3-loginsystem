@@ -70,5 +70,8 @@ class Admin extends CI_Controller {
         } else {
             $this->db->delet('user_access_menu', $data);
         }
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Access changed!</div>');
     }
 }
