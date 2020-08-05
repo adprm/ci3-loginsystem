@@ -25,7 +25,7 @@ function deleteConfirm(url){
             <!-- alert error edit data -->
             <?= $this->session->flashdata('message_error_editmenu'); ?>
             <!-- btn add new menu -->
-            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Add New Menu</a>
+            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newRoleModal">Add New Menu</a>
             <!-- table -->
             <table class="table table-hover">
                 <thead>
