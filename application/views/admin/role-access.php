@@ -30,7 +30,7 @@
                         <td><?= $m['menu']; ?></td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
+                                <input class="form-check-input" type="checkbox" <?= check_access($role['id'], $m['id']); ?>>
                             </div>
                         </td>
                     </tr>
