@@ -41,7 +41,7 @@ class Admin extends CI_Controller {
         // query data role
         $data['role'] = $this->db->get_where('user_role', ['id' => $role_id])->row_array();
         // query data menu
-        $data['menu'] = $this->db->get('user_menu')->resul_array();
+        $data['menu'] = $this->db->get('user_menu')->result_array();
         
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
