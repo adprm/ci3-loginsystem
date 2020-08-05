@@ -54,5 +54,10 @@ class Admin extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    
+    public function changeaccess() {
+        $menuId = $this->input->post('menuId');
+        $roleId = $this->input->post('roleId');
+
+        
+    }
 }
