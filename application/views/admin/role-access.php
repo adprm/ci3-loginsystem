@@ -17,6 +17,9 @@ function deleteConfirm(url){
             <!-- flashdata roleaccess -->
             <?= $this->session->flashdata('message'); ?>
 
+            <!-- cek role -->
+            <h5>Role : <?= $role['role']; ?></h5>
+
             <!-- table -->
             <table class="table table-hover">
                 <thead>
