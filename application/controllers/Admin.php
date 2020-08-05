@@ -64,5 +64,11 @@ class Admin extends CI_Controller {
         ];
 
         $result = $this->db->get_where('user_access_menu', $data);
+
+        if ($result->num_row() < 1) {
+            $this->db->insert('user_access_menu', $data);
+        } else {
+            $this->db->delet('user_access_menu', $data);
+        }
     }
 }
