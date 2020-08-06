@@ -32,6 +32,12 @@ class User extends CI_Controller {
             $this->load->view('templates/topbar', $data);
             $this->load->view('user/edit', $data);
             $this->load->view('templates/footer');
+        } else {
+            $name = $this->input->post('name');
+
+            $this->set('name', $name);
+            $this->db->where('email', $email);
+            $this->db->update('user');
         }
         
     }
