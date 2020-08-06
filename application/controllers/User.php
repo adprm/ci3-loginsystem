@@ -38,6 +38,10 @@ class User extends CI_Controller {
             $this->set('name', $name);
             $this->db->where('email', $email);
             $this->db->update('user');
+
+            $this->session->set_flashdata('message_success_editprofile', '<div class="alert alert-success" role="alert">
+            Your profile has been updated!</div>');
+            redirect('user');
         }
         
     }
