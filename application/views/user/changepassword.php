@@ -6,6 +6,12 @@
 
     <div class="row">
         <div class="col-lg-6">
+            <!-- input error current pasword -->
+            <?= $this->session->flashdata('message_error_inputcurrentpassword'); ?>
+            <!-- input error new password -->
+            <?= $this->session->flashdata('message_error_inputnewpassword'); ?>
+            <!-- input success change password -->
+            <?= $this->session->flashdata('message_success_changepassword'); ?>
             <form action="<?= base_url('user/changepassword'); ?>" method="post">
                 <div class="form-group">
                     <label for="current_password">Current Password</label>
