@@ -100,6 +100,9 @@ class User extends CI_Controller {
                     // password sudah ok
                     $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
                     
+                    $this->db->set('password', $password_hash);
+                    $this->db->where('email', $this->session->userdata('eamil'));
+                    $this->db->update('user');
                 }
             }
         }
