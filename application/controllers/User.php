@@ -66,8 +66,18 @@ class User extends CI_Controller {
             $this->session->set_flashdata('message_success_editprofile', '<div class="alert alert-success" role="alert">
             Your profile has been updated!</div>');
             redirect('user');
-        }
+        }  
+    }
+
+    public function changepassword() {
+        $data['title'] = 'Change Password';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/changepassword', $data);
+        $this->load->view('templates/footer');
     }
     
 }
