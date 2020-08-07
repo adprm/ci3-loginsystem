@@ -85,11 +85,22 @@ class User extends CI_Controller {
             $this->load->view('templates/footer');
         } else {
             $current_password = $this->input->post('current_password');
+            $new_password = $this->input->post('new_password1');
             // cek sama atau tidak password input dengan password yang ada di db
             if (!password_verify($current_password, $data['user']['password'])) {
                 $this->session->set_flashdata('message_error_inputcurrentpassword', '<div class="alert alert-danger" role="alert">
                 Worn current password!</div>');
                 redirect('user/changepassword');
+            } else {
+                if ($current_password == $new_password) {
+                    $this->session->set_flashdata('message_error_inputnewpassword', '<div class="alert alert-danger" role="alert">
+                    New password cannot be the same as current password!</div>');
+                    redirect('user/changepassword');
+                } else {
+                    // password sudah ok
+                    $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+                    
+                }
             }
         }
         
