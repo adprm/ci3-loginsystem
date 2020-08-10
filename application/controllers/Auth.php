@@ -121,6 +121,8 @@ class Auth extends CI_Controller {
             'charset'   => 'utf-8',
             'newline'   => '\r\n'
         ];
+
+        $this->load->library('email', $config);
     }
 
     public function logout() {
