@@ -111,7 +111,16 @@ class Auth extends CI_Controller {
     }
 
     private function _sendEmail() {
-
+        $config = [
+            'protocol'  => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_user' => 'izyadper00@gmail.com',
+            'smtp_pass' => 'permana00',
+            'smtp_port' => 465,
+            'mailtype'  => 'html',
+            'charset'   => 'utf-8',
+            'newline'   => '\r\n'
+        ];
     }
 
     public function logout() {
