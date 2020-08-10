@@ -101,6 +101,7 @@ class Auth extends CI_Controller {
 
             $this->db->insert('user', $data);
 
+            // send email
             $this->_sendEmail();
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
@@ -110,7 +111,7 @@ class Auth extends CI_Controller {
     }
 
     private function _sendEmail() {
-        
+
     }
 
     public function logout() {
