@@ -100,10 +100,17 @@ class Auth extends CI_Controller {
             ];
 
             $this->db->insert('user', $data);
+
+            $this->_sendEmail();
+
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Congratulation! your account has been created. Please Login!</div>');
             redirect('auth');
         }
+    }
+
+    private function _sendEmail() {
+        
     }
 
     public function logout() {
