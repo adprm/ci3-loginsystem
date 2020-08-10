@@ -74,8 +74,8 @@ class User extends CI_Controller {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
-        $this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[3]|mathces[new_password2]');
-        $this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[3]|mathces[new_password1]');
+        $this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[3]|matches[new_password2]');
+        $this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[3]|matches[new_password1]');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -89,7 +89,7 @@ class User extends CI_Controller {
             // cek sama atau tidak password input dengan password yang ada di db
             if (!password_verify($current_password, $data['user']['password'])) {
                 $this->session->set_flashdata('message_error_inputcurrentpassword', '<div class="alert alert-danger" role="alert">
-                Worn current password!</div>');
+                Worng current password!</div>');
                 redirect('user/changepassword');
             } else {
                 if ($current_password == $new_password) {
@@ -101,7 +101,7 @@ class User extends CI_Controller {
                     $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
                     
                     $this->db->set('password', $password_hash);
-                    $this->db->where('email', $this->session->userdata('eamil'));
+                    $this->db->where('email', $this->session->userdata('email'));
                     $this->db->update('user');
 
                     $this->session->set_flashdata('message_success_changepassword', '<div class="alert alert-success" role="alert">
