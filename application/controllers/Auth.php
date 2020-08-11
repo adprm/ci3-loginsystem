@@ -95,14 +95,14 @@ class Auth extends CI_Controller {
                 'image' => 'default.jpg',
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
-                'is_active' => 0,
+                'is_active' => 1,
                 'date_created' => time()
             ];
 
             $this->db->insert('user', $data);
 
             // send email
-            $this->_sendEmail();
+            // $this->_sendEmail();
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Congratulation! your account has been created. Please Login!</div>');
@@ -110,26 +110,32 @@ class Auth extends CI_Controller {
         }
     }
 
-    private function _sendEmail() {
-        $config = [
-            'protocol'  => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_user' => 'izyadper00@gmail.com',
-            'smtp_pass' => 'permana00',
-            'smtp_port' => 465,
-            'mailtype'  => 'html',
-            'charset'   => 'utf-8',
-            'newline'   => '\r\n'
-        ];
+    // private function _sendEmail() {
+    //     $config = [
+    //         'protocol'  => 'smtp',
+    //         'smtp_host' => 'ssl://smtp.googlemail.com',
+    //         'smtp_user' => 'izyadper00@gmail.com',
+    //         'smtp_pass' => 'permana00',
+    //         'smtp_port' => 25,
+    //         'mailtype'  => 'html',
+    //         'charset'   => 'utf-8',
+    //         'newline'   => "\r\n"
+    //     ];
 
-        $this->load->library('email', $config);
+    //     $this->load->library('email', $config);
 
-        $this->email->from('izyadper00gmail.com', 'Aditiya Permana');
-        $this->email->to('aditiyaprmn00@gmail.com');
-        $this->email->subject('Testing');
-        $this->email->message('Hello world');
-        $this->email->send();
-    }
+    //     $this->email->from('izyadper00gmail.com', 'Aditiya Permana');
+    //     $this->email->to('aditiyaprmn00@gmail.com');
+    //     $this->email->subject('Testing');
+    //     $this->email->message('Hello world');
+
+    //     if ($this->email->send()) {
+    //         return true; 
+    //     } else {
+    //         echo $this->email->print_debugger();
+    //         die;
+    //     }
+    // }
 
     public function logout() {
         $this->session->unset_userdata('email');
