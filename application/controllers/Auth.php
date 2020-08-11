@@ -121,26 +121,27 @@ class Auth extends CI_Controller {
     }
 
     private function _sendEmail($token, $type) {
-        $config = [
-            'protocol'  => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_user' => 'aditiyaprmn00@gmail.com',
-            'smtp_pass' => 'nasigoreng05',
-            'smtp_port' => 465,
-            'mailtype'  => 'html',
-            'charset'   => 'utf-8',
-            'newline'   => "\r\n"
-        ];
+        $this->load->library('email');
 
-        $this->load->library('email', $config);
+        $config = array();
+        $config['protocol']  = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.gmail.com';
+        $config['smtp_user'] = 'aditiyaper00@gmail.com';
+        $config['smtp_pass'] = 'permana00';
+        $config['smtp_port'] = 465;
+        $config['mailtype']  = 'html';
+        $config['charset']   = 'utf-8';
+
+        $this->load->initialize($config);
         $this->email->initialize($config);
+        $this->email->set_newline("\r\n");       
 
-        $this->email->from('aditiyaprmn00@gmail.com', 'Aditiya Permana');
+        $this->email->from('aditiyaper00@gmail.com', 'Login System ADPRM');
         $this->email->to($this->input->post('email'));
 
         if ($type == 'verify') {
             $this->email->subject('Account Verification');
-            $this->email->message('Clict this link to verify you account : <a href="' . 
+            $this->email->message('Click this link to verify you account : <a href="' . 
             base_url() .'auth/verify?email=' . $this->input->post('email') . '&token=' . $token .'">Activate</a>');
         }
 
