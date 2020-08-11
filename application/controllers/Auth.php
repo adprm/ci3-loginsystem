@@ -104,12 +104,12 @@ class Auth extends CI_Controller {
             $token = base64_encode(random_bytes(32));
             $user_token = [
                 'email' => $email,
-                'toke' => $token,
+                'token' => $token,
                 'date_created' => time()
             ];
 
             $this->db->insert('user', $data);
-            $this->db->insert('user_token', $data);
+            $this->db->insert('user_token', $user_token);
 
             // send email
             $this->_sendEmail($token, 'verify');
@@ -137,9 +137,12 @@ class Auth extends CI_Controller {
 
         $this->email->from('aditiyaprmn00@gmail.com', 'Aditiya Permana');
         $this->email->to($this->input->post('email'));
-        $this->email->subject('Account Verification');
-        $this->email->message('Clict this link to verify you account : <a href="' . 
-        base_url() .'auth/verify?email=' . $this->input->post('email') . '&token=' . $token .'">Activate</a>');
+
+        if ($type == 'verify') {
+            $this->email->subject('Account Verification');
+            $this->email->message('Clict this link to verify you account : <a href="' . 
+            base_url() .'auth/verify?email=' . $this->input->post('email') . '&token=' . $token .'">Activate</a>');
+        }
 
         if ($this->email->send()) {
             return true; 
