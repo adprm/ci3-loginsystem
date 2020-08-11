@@ -109,6 +109,7 @@ class Auth extends CI_Controller {
             ]
 
             $this->db->insert('user', $data);
+            $this->db->insert('user_token', $data);
 
             // send email
             $this->_sendEmail();
