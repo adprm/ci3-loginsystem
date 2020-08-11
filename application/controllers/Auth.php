@@ -106,13 +106,13 @@ class Auth extends CI_Controller {
                 'email' => $email,
                 'toke' => $token,
                 'date_created' => time()
-            ]
+            ];
 
             $this->db->insert('user', $data);
             $this->db->insert('user_token', $data);
 
             // send email
-            $this->_sendEmail();
+            $this->_sendEmail($token, 'verify');
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Congratulation! your account has been created. Please Login!</div>');
@@ -120,7 +120,7 @@ class Auth extends CI_Controller {
         }
     }
 
-    private function _sendEmail() {
+    private function _sendEmail($token, $type) {
         $config = [
             'protocol'  => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -136,9 +136,10 @@ class Auth extends CI_Controller {
         $this->email->initialize($config);
 
         $this->email->from('aditiyaprmn00@gmail.com', 'Aditiya Permana');
-        $this->email->to('izyadper00@gmail.com');
-        $this->email->subject('Testing');
-        $this->email->message('Hello world');
+        $this->email->to($this->input->post('email'));
+        $this->email->subject('Account Verification');
+        $this->email->message('Clict this link to verify you account : <a href="' . 
+        base_url() .'auth/verify?email=' . $this->input->post('email') . '&token=' . $token .'">Activate</a>');
 
         if ($this->email->send()) {
             return true; 
