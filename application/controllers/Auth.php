@@ -123,6 +123,7 @@ class Auth extends CI_Controller {
         ];
 
         $this->load->library('email', $config);
+        $this->email->initialize($config);
 
         $this->email->from('izyadper00gmail.com', 'Aditiya Permana');
         $this->email->to('aditiyaprmn00@gmail.com');
