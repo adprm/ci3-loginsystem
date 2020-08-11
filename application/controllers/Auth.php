@@ -158,7 +158,14 @@ class Auth extends CI_Controller {
         $token = $this->input->get('token');
 
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
-        
+
+        if ($user) {
+
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Account activation failed! Wrong email.</div>');
+            redirect('auth');
+        }
     }
 
     public function logout() {
