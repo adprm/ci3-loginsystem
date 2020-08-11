@@ -161,9 +161,18 @@ class Auth extends CI_Controller {
 
         if ($user) {
             $user_token = $this->db->get_where('user_token', ['token' =>$token])->row_array();
-
             if ($user_token) {
-
+                if (time() - $user_token['date_created'] < (60*60*24)) {
+                    
+                } else {
+                    // delete user
+                    $this->db->delete('user', ['email' => $email]);
+                    // delete token
+                    $this->db->delete('user_token', ['email' => $email]);
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Account activation failed! Token expired.</div>');
+                    redirect('auth');
+                }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Account activation failed! Wrong token.</div>');
