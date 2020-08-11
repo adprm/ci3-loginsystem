@@ -154,6 +154,8 @@ class Auth extends CI_Controller {
     }
 
     public function verify() {
+        $email = $this->input->get('email');
+        $token = $this->input->get('token');
         
     }
 
