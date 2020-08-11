@@ -102,7 +102,11 @@ class Auth extends CI_Controller {
 
             // siapkan token
             $token = base64_encode(random_bytes(32));
-            
+            $user_token = [
+                'email' => $email,
+                'toke' => $token,
+                'date_created' => time()
+            ]
 
             $this->db->insert('user', $data);
 
