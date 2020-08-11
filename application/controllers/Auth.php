@@ -99,7 +99,11 @@ class Auth extends CI_Controller {
                 'date_created' => time()
             ];
 
-            // $this->db->insert('user', $data);
+            // siapkan token
+            $token = base64_encode(random_bytes(32));
+            
+
+            $this->db->insert('user', $data);
 
             // send email
             $this->_sendEmail();
@@ -114,8 +118,8 @@ class Auth extends CI_Controller {
         $config = [
             'protocol'  => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_user' => 'izyadper00@gmail.com',
-            'smtp_pass' => 'permana00',
+            'smtp_user' => 'aditiyaprmn00@gmail.com',
+            'smtp_pass' => 'nasigoreng05',
             'smtp_port' => 465,
             'mailtype'  => 'html',
             'charset'   => 'utf-8',
@@ -125,8 +129,8 @@ class Auth extends CI_Controller {
         $this->load->library('email', $config);
         $this->email->initialize($config);
 
-        $this->email->from('izyadper00gmail.com', 'Aditiya Permana');
-        $this->email->to('aditiyaprmn00@gmail.com');
+        $this->email->from('aditiyaprmn00@gmail.com', 'Aditiya Permana');
+        $this->email->to('izyadper00@gmail.com');
         $this->email->subject('Testing');
         $this->email->message('Hello world');
 
