@@ -115,7 +115,7 @@ class Auth extends CI_Controller {
             $this->_sendEmail($token, 'verify');
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Congratulation! your account has been created. Please Login!</div>');
+            Congratulation! your account has been created. Please activate your account!</div>');
             redirect('auth');
         }
     }
@@ -163,7 +163,15 @@ class Auth extends CI_Controller {
             $user_token = $this->db->get_where('user_token', ['token' =>$token])->row_array();
             if ($user_token) {
                 if (time() - $user_token['date_created'] < (60*60*24)) {
-                    
+                    $this->db->set('is_active', 1);
+                    $this->db->where('email', $email);
+                    $this->db->update('user');
+
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                    '. $email .' has been activated! Please login.</div>');
+                    redirect('auth');
+
+                    $this->db->delete('user_token', ['email' => $email]);
                 } else {
                     // delete user
                     $this->db->delete('user', ['email' => $email]);
