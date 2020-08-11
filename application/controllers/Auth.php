@@ -126,7 +126,7 @@ class Auth extends CI_Controller {
         $config = array();
         $config['protocol']  = 'smtp';
         $config['smtp_host'] = 'ssl://smtp.gmail.com';
-        $config['smtp_user'] = 'aditiyaper00@gmail.com';
+        $config['smtp_user'] = 'izyadper00@gmail.com';
         $config['smtp_pass'] = 'permana00';
         $config['smtp_port'] = 465;
         $config['mailtype']  = 'html';
@@ -136,7 +136,7 @@ class Auth extends CI_Controller {
         $this->email->initialize($config);
         $this->email->set_newline("\r\n");       
 
-        $this->email->from('aditiyaper00@gmail.com', 'Login System ADPRM');
+        $this->email->from('izyadper00@gmail.com', 'Login System ADPRM');
         $this->email->to($this->input->post('email'));
 
         if ($type == 'verify') {
