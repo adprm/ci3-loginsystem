@@ -99,7 +99,7 @@ class Auth extends CI_Controller {
                 'date_created' => time()
             ];
 
-            $this->db->insert('user', $data);
+            // $this->db->insert('user', $data);
 
             // send email
             $this->_sendEmail();
