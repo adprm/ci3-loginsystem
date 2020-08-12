@@ -1,4 +1,25 @@
 ###################
+Login System
+###################
+Complete login system with Codeigniter.
+
+*******************
+Features
+******************* 
+- Register a login account by email
+- User access level
+- Menu management
+- User management
+- User activation
+- Forgot password
+
+*******************
+How to use
+*******************
+- Create a new database with the name login_system
+- Import login_system.sql db into the database
+
+###################
 What is CodeIgniter
 ###################
 
