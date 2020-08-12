@@ -269,10 +269,15 @@ class Auth extends CI_Controller {
     }
 
     public function changePassword() {
-        $data['title'] = 'Change Password';
-        $this->load->view('templates/auth_header', $data);
-        $this->load->view('auth/change-password');
-        $this->load->view('templates/auth_footer');
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]');
+        $this->form_validation->set_rules('password2', 'Repeat password', 'required|trim|min_length[3]|matches[password1]');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Change Password';
+            $this->load->view('templates/auth_header', $data);
+            $this->load->view('auth/change-password');
+            $this->load->view('templates/auth_footer');
+        }
     }
 
 }
