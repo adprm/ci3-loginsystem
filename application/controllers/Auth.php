@@ -269,9 +269,9 @@ class Auth extends CI_Controller {
     }
 
     public function changePassword() {
-        $data['title'] = 'Forgot Password';
+        $data['title'] = 'Change Password';
         $this->load->view('templates/auth_header', $data);
-        $this->load->view('auth/forgot-password');
+        $this->load->view('auth/change-password');
         $this->load->view('templates/auth_footer');
     }
 
