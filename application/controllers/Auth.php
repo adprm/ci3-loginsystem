@@ -244,4 +244,9 @@ class Auth extends CI_Controller {
         }
     }
 
+    public function resetpassword() {
+        $email = $this->input->get('email');
+        $token = $this->input->get('token');
+    }
+
 }
