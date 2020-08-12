@@ -142,7 +142,7 @@ class Auth extends CI_Controller {
         if ($type == 'verify') {
             $this->email->subject('Account Verification');
             $this->email->message('Click this link to verify you account : <a href="' . 
-            base_url() .'auth/verify?email=' . $this->input->post('email') . '&token=' . $token .'">Activate</a>');
+            base_url() .'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) .'">Activate</a>');
         }
 
         if ($this->email->send()) {
@@ -205,5 +205,7 @@ class Auth extends CI_Controller {
     public function blocked() {
         $this->load->view('auth/blocked');
     }
+
+    
 
 }
