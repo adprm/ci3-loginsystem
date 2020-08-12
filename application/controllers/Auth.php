@@ -143,6 +143,10 @@ class Auth extends CI_Controller {
             $this->email->subject('Account Verification');
             $this->email->message('Click this link to verify you account : <a href="' . 
             base_url() .'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) .'">Activate</a>');
+        } else if ($type == 'forgot') {
+            $this->email->subject('Reset Password');
+            $this->email->message('Click this link to reset you password : <a href="' . 
+            base_url() .'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) .'">Reset password</a>');
         }
 
         if ($this->email->send()) {
@@ -228,13 +232,16 @@ class Auth extends CI_Controller {
 
                 $this->db->insert('user_token', $user_token);
                 $this->_sendEmail($token, 'forgot');
+
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Please check your email to reset password!</div>');
+                redirect('auth/forgotpassword');           
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Email is not registered or activated!</div>');
                 redirect('auth/forgotpassword');
             }
         }
-
     }
 
 }
