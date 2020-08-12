@@ -247,6 +247,16 @@ class Auth extends CI_Controller {
     public function resetpassword() {
         $email = $this->input->get('email');
         $token = $this->input->get('token');
+
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+        if ($user) {
+            $user_token = $this->db->get_where(['user_token' => $token])->row_array();
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Reset password failed! Wrong email.</div>');
+            redirect('auth');
+        }
     }
 
 }
