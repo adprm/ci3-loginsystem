@@ -207,10 +207,15 @@ class Auth extends CI_Controller {
     }
 
     public function forgotpassword() {
-        $data['title'] = 'Forgot Password';
-        $this->load->view('templates/auth_header', $data);
-        $this->load->view('auth/forgot-password');
-        $this->load->view('templates/auth_footer');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Forgot Password';
+            $this->load->view('templates/auth_header', $data);
+            $this->load->view('auth/forgot-password');
+            $this->load->view('templates/auth_footer');
+        }
+
     }
 
 }
