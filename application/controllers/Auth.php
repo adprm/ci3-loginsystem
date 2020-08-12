@@ -127,7 +127,7 @@ class Auth extends CI_Controller {
         $config['protocol']  = 'smtp';
         $config['smtp_host'] = 'ssl://smtp.gmail.com';
         $config['smtp_user'] = 'izyadper00@gmail.com';
-        $config['smtp_pass'] = 'permana00';
+        $config['smtp_pass'] = 'nasigoreng05';
         $config['smtp_port'] = 465;
         $config['mailtype']  = 'html';
         $config['charset']   = 'utf-8';
