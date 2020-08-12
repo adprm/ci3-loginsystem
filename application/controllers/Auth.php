@@ -216,14 +216,14 @@ class Auth extends CI_Controller {
             $this->load->view('templates/auth_footer');
         } else {
             $email = $this->input->post('email');
-            $user = $this->db->get_where('user', ['email' => $email])->row_array();
+            $user = $this->db->get_where('user', ['email' => $email, 'is_active' => 1])->row_array();
 
             if ($user) {
 
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                Email is not registered!</div>');
-                redirect('auth');
+                Email is not registered or activated!</div>');
+                redirect('auth/forgotpassword');
             }
         }
 
