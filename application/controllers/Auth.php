@@ -225,6 +225,9 @@ class Auth extends CI_Controller {
                     'token' => $token,
                     'date_created' => time()
                 ];
+
+                $this->db->insert('user_token', $user_token);
+                $this->_sendEmail($token, 'forgot');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Email is not registered or activated!</div>');
