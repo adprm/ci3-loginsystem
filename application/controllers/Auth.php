@@ -269,6 +269,9 @@ class Auth extends CI_Controller {
     }
 
     public function changePassword() {
+        if (!$this->session->userdata('reset_email')) {
+            redirect('auth');
+        }
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]');
         $this->form_validation->set_rules('password2', 'Repeat password', 'required|trim|min_length[3]|matches[password1]');
 
