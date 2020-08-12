@@ -280,6 +280,16 @@ class Auth extends CI_Controller {
         } else {
             $password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
             $email = $this->session->userdata('reset_email');
+
+            $this->db->set('password', $password);
+            $this->db->where('email', $email);
+            $this->db->update('user');
+
+            $this->session->unset_userdata('reset_email');
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Password has been changed! Pelase login.</div>');
+            redirect('auth');
         }
     }
 
