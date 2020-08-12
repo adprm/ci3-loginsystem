@@ -206,6 +206,11 @@ class Auth extends CI_Controller {
         $this->load->view('auth/blocked');
     }
 
-    
+    public function forgotPassword() {
+        $data['title'] = 'Forgot Password';
+        $this->load->view('templates/auth_header', $data);
+        $this->load->view('auth/forgot-password');
+        $this->load->view('templates/auth_footer');
+    }
 
 }
