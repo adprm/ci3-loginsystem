@@ -219,7 +219,7 @@ class Auth extends CI_Controller {
             $user = $this->db->get_where('user', ['email' => $email, 'is_active' => 1])->row_array();
 
             if ($user) {
-
+                $token = base64_encode(random_bytes(32));
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Email is not registered or activated!</div>');
