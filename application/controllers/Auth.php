@@ -214,6 +214,15 @@ class Auth extends CI_Controller {
             $this->load->view('templates/auth_header', $data);
             $this->load->view('auth/forgot-password');
             $this->load->view('templates/auth_footer');
+        } else {
+            $email = $this->input->post('email');
+            $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+            if ($user) {
+
+            } else {
+                
+            }
         }
 
     }
